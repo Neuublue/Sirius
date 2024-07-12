@@ -212,9 +212,12 @@ function EspObject:Update()
 
 	local _, onScreen, depth = worldToScreen(head.Position);
 	self.onScreen = onScreen;
-	self.distance = depth;
 
-	if interface.sharedSettings.limitDistance and depth > interface.sharedSettings.maxDistance then
+    local distance = (head.Position - self.interface:getCharacter(localPlayer):FindFirstChild('HumanoidRootPart').Position).Magnitude
+
+	self.distance = distance;
+
+	if interface.sharedSettings.limitDistance and distance > interface.sharedSettings.maxDistance then
 		self.onScreen = false;
 	end
 
