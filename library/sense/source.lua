@@ -213,8 +213,7 @@ function EspObject:Update()
 	local _, onScreen, depth = worldToScreen(head.Position);
 	self.onScreen = onScreen;
 
-    local distance = (head.Position - self.interface:getCharacter(localPlayer):FindFirstChild('HumanoidRootPart').Position).Magnitude
-
+    local distance = (head.Position - localPlayer.Character:WaitForChild('HumanoidRootPart').Position).Magnitude
 	self.distance = distance;
 
 	if interface.sharedSettings.limitDistance and distance > interface.sharedSettings.maxDistance then
@@ -516,8 +515,7 @@ function InstanceObject:Render()
 	local world = getPivot(instance).Position;
 	local position, visible, depth = worldToScreen(world);
 
-    local distance = (world - self.interface:getCharacter(localPlayer):FindFirstChild('HumanoidRootPart').Position).Magnitude
-
+    local distance = (world - localPlayer.Character:WaitForChild('HumanoidRootPart').Position).Magnitude
 	if options.limitDistance and distance > options.maxDistance then
 		visible = false;
 	end
